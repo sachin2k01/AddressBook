@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class AddContact {
-    static void AddContacts(AddressBook a) {
+    public void AddContacts(AddressBook a) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter first name");
         String fname = sc.next();
@@ -19,7 +19,7 @@ public class AddContact {
         a.contacts.add(p1);
     }
 
-    public static void Search(AddressBook a2)
+    public void Search(AddressBook a2)
     {
         Scanner sc=new Scanner(System.in);
         System.out.println("Enter First Name");
@@ -47,4 +47,70 @@ public class AddContact {
 
 
     }
+
+    public void SearchByPhone(AddressBook A1)
+    {
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter a phone number to Search ");
+        String phone=sc.next();
+        boolean flag=false;
+        for(Person p : A1.contacts)
+        {
+            if (p.getPhoneNumber().equalsIgnoreCase(phone))
+            {
+                System.out.println(p);
+                flag=true;
+            }
+        }
+        if(!flag)
+        {
+            System.out.println("Phone No is Not Found");
+        }
+    }
+
+    public void UpdatePhoneNo(AddressBook a, String s)
+    {
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter a Phone Number to Update");
+        String phone=sc.next();
+        boolean flag=false;
+        for (Person p : a.contacts)
+        {
+            if(p.getF_name().equalsIgnoreCase(s))
+            {
+                p.setPhoneNumber(phone);
+                System.out.println("Phone no is Updated Successfully");
+                flag=true;
+            }
+        }
+        if(!flag)
+        {
+            System.out.println("Phone Number is Not Found");
+        }
+    }
+
+    public void Delete(AddressBook a)
+    {
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter a person Name to Delete");
+        String del=sc.next();
+        boolean flag=false;
+        for (Person p: a.contacts)
+        {
+            if (p.getF_name().equalsIgnoreCase(del))
+            {
+                a.contacts.remove(p);
+                System.out.println("User Deleted");
+                flag=true;
+                break;
+            }
+        }
+        if(!flag)
+        {
+            System.out.println("User is Not Found");
+        }
+
+    }
+
+
 }
