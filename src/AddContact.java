@@ -1,8 +1,11 @@
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Iterator;
 import java.util.Scanner;
 
-public class AddContact {
-    public void AddContacts(AddressBook a) {
-        Scanner sc = new Scanner(System.in);
+public class AddContact
+{
+    public void AddContacts(AddressBook a, Scanner sc) {
         System.out.println("Enter first name");
         String fname = sc.next();
         System.out.println("Enter last name");
@@ -19,12 +22,12 @@ public class AddContact {
         a.contacts.add(p1);
     }
 
-    public void Search(AddressBook a2)
+
+    public void Search(AddressBook a2,Scanner sc)
     {
-        Scanner sc=new Scanner(System.in);
         System.out.println("Enter First Name");
         String names=sc.next();
-        boolean find=false;
+        boolean find = false;
 
         for (int i=0;i<a2.contacts.size();i++)
         {
@@ -44,13 +47,10 @@ public class AddContact {
         {
             System.out.println("Contact Not Found !");
         }
-
-
     }
 
-    public void SearchByPhone(AddressBook A1)
+    public void SearchByPhone(AddressBook A1, Scanner sc)
     {
-        Scanner sc=new Scanner(System.in);
         System.out.println("Enter a phone number to Search ");
         String phone=sc.next();
         boolean flag=false;
@@ -89,28 +89,39 @@ public class AddContact {
         }
     }
 
-    public void Delete(AddressBook a)
+
+    public void Delete(AddressBook a,Scanner sc)
     {
-        Scanner sc=new Scanner(System.in);
-        System.out.println("Enter a person Name to Delete");
-        String del=sc.next();
-        boolean flag=false;
-        for (Person p: a.contacts)
-        {
+        System.out.println("Enter a person name to delete:");
+        String del = sc.next();
+        boolean found = false;
+
+        Iterator<Person> iterator = a.contacts.iterator();
+        while (iterator.hasNext()) {
+            Person p = iterator.next();
             if (p.getF_name().equalsIgnoreCase(del))
             {
-                a.contacts.remove(p);
-                System.out.println("User Deleted");
-                flag=true;
+                iterator.remove(); // Remove the current element using the iterator
+                System.out.println("User deleted");
+                found = true;
                 break;
             }
         }
-        if(!flag)
-        {
-            System.out.println("User is Not Found");
+
+        if (!found) {
+            System.out.println("User not found");
         }
 
     }
 
+    public void SortName(AddressBook a, Scanner sc)
+    {
+        a.contacts.sort(Comparator.comparing(Person::getF_name, String.CASE_INSENSITIVE_ORDER));
+        System.out.println("Sorted List Are: ");
+        for (Person p: a.contacts)
+        {
+            System.out.println(p);
+        }
+    }
 
 }
