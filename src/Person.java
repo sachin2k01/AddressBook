@@ -4,14 +4,16 @@ public class Person {
     private String phoneNumber;
     private int zipcode;
     private String relation;
+    private String city;
 
-    public Person(String f_name, String l_name, String phoneNumber, int zipcode, String relation)
+    public Person(String f_name, String l_name, String phoneNumber, int zipcode, String relation, String city)
     {
         this.f_name=f_name;
         this.l_name=l_name;
         this.phoneNumber=phoneNumber;
         this.zipcode=zipcode;
         this.relation=relation;
+        this.city=city;
     }
 
     public String getF_name() {
@@ -34,6 +36,14 @@ public class Person {
         return zipcode;
     }
 
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
     public String getRelation() {
         return relation;
     }
@@ -45,6 +55,7 @@ public class Person {
                 ", last name='" + l_name + '\'' +
                 ", phone no='" + phoneNumber + '\'' +
                 ", zipcode=" + zipcode +
+                ",City=" +city +
                 ", relation='" + relation + '\'' +
                 '}';
     }

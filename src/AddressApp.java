@@ -4,57 +4,60 @@ public class AddressApp
 {
     public static void main(String[] args)
     {
-        Scanner sc=new Scanner(System.in);
-        ArrayList<AddressBook> Abook=new ArrayList<>();
-        AddContact add=new AddContact();
-        System.out.println("Enter Address Book Name");
-        String book=sc.next();
-        AddressBook a1=new AddressBook(book);
-        Abook.add(a1);
-        for (AddressBook a:Abook)
-        {
-            if (a.name.equalsIgnoreCase(book))
+        Scanner sc = new Scanner(System.in);
+        BookFunction fun=new BookFunction();
+        ArrayList<AddressBook> Abook = new ArrayList<>();
+        String menu = "Press \n1:Adding A contact\n2: Displaying All Contact\n3: Search by first name\n4: Search by Phone number\n5: Delete by USer First name\n6: Update phone Number\n 7:For Sort based on Name";
+        AddressBook a = new AddressBook("Book1");
+        AddressBook b = new AddressBook("Book2");
+        AddressBook c = new AddressBook("Book3");
+        Abook.add(a);
+        Abook.add(b);
+        Abook.add(c);
+        int S=1;
+        do {
+            System.out.println("1 : Select Address Book\n2: Display all the address book\n3:Find all contacts of a city\n4.to find how many contact in city \n0.for Exit");
+            int inp = sc.nextInt();
+            switch (inp)
             {
-                while (true)
-                {
-                    System.out.println("Welcome to Address Book");
-                    System.out.println("Select the Choice\n 1.For Add Contact \n 2.For Display All the Contact list \n 3.For Search for a contact ");
-                    System.out.println("4.For Search By Phone Number \n 5.for Update a Phone Number \n 6. for Delete a user \n 7.For Sorting Your Contact Based on First Name\n 0.For Exit");
-                    int choice=sc.nextInt();
-                    switch (choice)
+                case 1:
+                    System.out.println("Enter the Name of the Book You Want");
+                    String bname=sc.next();
+                    for (AddressBook a1: Abook)
                     {
-                        case 0:
-                            System.exit(0);
-                        case 1:
-                            add.AddContacts(a1,sc);
-                            break;
-                        case 2:
-                            System.out.println(a1.contacts);
-                            break;
-                        case 3:
-                            add.Search(a1,sc);
-                            break;
-                        case 4:
-                            add.SearchByPhone(a1,sc);
-                            break;
-                        case 5:
-                            System.out.println("Enter a Name of a person Update phone number");
-                            String name=sc.next();
-                            add.UpdatePhoneNo(a1,name);
-                            break;
-                        case 6:
-                            add.Delete(a1,sc);
-                            break;
-                        case 7:
-                            add.SortName(a1,sc);
-                            break;
-                        default:
-                            System.out.println("Invalid Choice! Choose Correct Option");
+                        if (a1.name.equalsIgnoreCase(bname))
+                        {
+                            fun.Function(a1,menu);
+                        }
+                    }
+                    break;
+                case 2: {
+                    for (AddressBook a2 : Abook) {
+                        System.out.println(a2.name + " " + a2.contacts);
                     }
                 }
+                break;
+                case 3:
+                    System.out.println("Enter the city Name");
+                    String city=sc.next();
+                    for (AddressBook a2:Abook)
+                    {
+                        fun.CityContact(a2,city);
+                    }
+                    break;
+                case 4:
+                    System.out.println("Enter the city Name");
+                    String cit=sc.next();
+                    for (AddressBook a2:Abook)
+                    {
+                        int res=fun.CountCity(a2,cit);
+                        System.out.println(cit+" Found in contacts "+res+ " Times in Book "+c.name );
+                    }
+                    break;
 
+                case 0:
+                    System.exit(0);
             }
-        }
-
+        }while (S!=0);
     }
 }

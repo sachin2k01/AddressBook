@@ -17,8 +17,10 @@ public class AddContact
         int zip = sc.nextInt();
         System.out.println("Enter Relation");
         String relation = sc.next();
+        System.out.println("Enter City");
+        String city=sc.next();
         //person constructor
-        Person p1 = new Person(fname,lname,phoneNumber,zip,relation);
+        Person p1 = new Person(fname,lname,phoneNumber,zip,relation,city);
         a.contacts.add(p1);
     }
 
@@ -39,6 +41,7 @@ public class AddContact
                 System.out.println("Mobile Number: " + contact.getPhoneNumber());
                 System.out.println("Zip Number: " + contact.getZipcode());
                 System.out.println("Relation is: " + contact.getRelation());
+                System.out.println("City is" +contact.getCity());
                 find = true;
                 break;
             }
