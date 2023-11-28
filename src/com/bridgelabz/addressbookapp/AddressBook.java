@@ -1,8 +1,5 @@
-import java.awt.print.Book;
+package com.bridgelabz.addressbookapp;
 import java.util.ArrayList;
-import java.util.Scanner;
-
-
 public class AddressBook {
     String name;
     ArrayList<Person> contacts;

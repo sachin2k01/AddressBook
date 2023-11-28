@@ -1,3 +1,5 @@
+package com.bridgelabz.addressbookapp;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 public class AddressApp
@@ -5,7 +7,7 @@ public class AddressApp
     public static void main(String[] args)
     {
         Scanner sc = new Scanner(System.in);
-        BookFunction fun=new BookFunction();
+        MultipleBook fun=new MultipleBook();
         ArrayList<AddressBook> Abook = new ArrayList<>();
         String menu = "Press \n1:Adding A contact\n2: Displaying All Contact\n3: Search by first name\n4: Search by Phone number\n5: Delete by USer First name\n6: Update phone Number\n 7:For Sort based on Name";
         AddressBook a = new AddressBook("Book1");
@@ -27,7 +29,7 @@ public class AddressApp
                     {
                         if (a1.name.equalsIgnoreCase(bname))
                         {
-                            fun.Function(a1,menu);
+                            fun.function(a1,menu);
                         }
                     }
                     break;
@@ -42,7 +44,7 @@ public class AddressApp
                     String city=sc.next();
                     for (AddressBook a2:Abook)
                     {
-                        fun.CityContact(a2,city);
+                        fun.cityContact(a2,city);
                     }
                     break;
                 case 4:
@@ -50,7 +52,7 @@ public class AddressApp
                     String cit=sc.next();
                     for (AddressBook a2:Abook)
                     {
-                        int res=fun.CountCity(a2,cit);
+                        int res=fun.countCity(a2,cit);
                         System.out.println(cit+" Found in contacts "+res+ " Times in Book "+c.name );
                     }
                     break;

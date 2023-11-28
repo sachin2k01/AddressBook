@@ -1,6 +1,7 @@
+package com.bridgelabz.addressbookapp;
 public class Person {
-    private String f_name;
-    private String l_name;
+    private String firstName;
+    private String lastName;
     private String phoneNumber;
     private int zipcode;
     private String relation;
@@ -8,8 +9,8 @@ public class Person {
 
     public Person(String f_name, String l_name, String phoneNumber, int zipcode, String relation, String city)
     {
-        this.f_name=f_name;
-        this.l_name=l_name;
+        this.firstName=f_name;
+        this.lastName=l_name;
         this.phoneNumber=phoneNumber;
         this.zipcode=zipcode;
         this.relation=relation;
@@ -17,11 +18,11 @@ public class Person {
     }
 
     public String getF_name() {
-        return f_name;
+        return firstName;
     }
 
     public String getL_name() {
-        return l_name;
+        return lastName;
     }
 
     public void setPhoneNumber(String phoneNumber) {
@@ -50,9 +51,9 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person{" +
-                "first name='" + f_name + '\'' +
-                ", last name='" + l_name + '\'' +
+        return "com.bridgelabz.addressbookapp.Person{" +
+                "first name='" + firstName + '\'' +
+                ", last name='" + lastName + '\'' +
                 ", phone no='" + phoneNumber + '\'' +
                 ", zipcode=" + zipcode +
                 ",City=" +city +

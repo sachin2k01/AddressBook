@@ -1,15 +1,15 @@
-import java.util.ArrayList;
+package com.bridgelabz.addressbookapp;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.Scanner;
 
-public class AddContact
+public class ContactBookService
 {
-    public void AddContacts(AddressBook a, Scanner sc) {
+    public void addContacts(AddressBook a, Scanner sc) {
         System.out.println("Enter first name");
-        String fname = sc.next();
+        String firstname = sc.next();
         System.out.println("Enter last name");
-        String lname = sc.next();
+        String lastname = sc.next();
         System.out.println("Enter Phone number");
         String phoneNumber = sc.next();
         sc.nextLine();
@@ -20,12 +20,12 @@ public class AddContact
         System.out.println("Enter City");
         String city=sc.next();
         //person constructor
-        Person p1 = new Person(fname,lname,phoneNumber,zip,relation,city);
+        Person p1 = new Person(firstname,lastname,phoneNumber,zip,relation,city);
         a.contacts.add(p1);
     }
 
 
-    public void Search(AddressBook a2,Scanner sc)
+    public void search(AddressBook a2, Scanner sc)
     {
         System.out.println("Enter First Name");
         String names=sc.next();
@@ -52,7 +52,7 @@ public class AddContact
         }
     }
 
-    public void SearchByPhone(AddressBook A1, Scanner sc)
+    public void searchByPhone(AddressBook A1, Scanner sc)
     {
         System.out.println("Enter a phone number to Search ");
         String phone=sc.next();
@@ -71,7 +71,7 @@ public class AddContact
         }
     }
 
-    public void UpdatePhoneNo(AddressBook a, String s)
+    public void updatePhoneNo(AddressBook a, String s)
     {
         Scanner sc=new Scanner(System.in);
         System.out.println("Enter a Phone Number to Update");
@@ -93,7 +93,7 @@ public class AddContact
     }
 
 
-    public void Delete(AddressBook a,Scanner sc)
+    public void delete(AddressBook a, Scanner sc)
     {
         System.out.println("Enter a person name to delete:");
         String del = sc.next();
@@ -117,7 +117,7 @@ public class AddContact
 
     }
 
-    public void SortName(AddressBook a, Scanner sc)
+    public void sortName(AddressBook a)
     {
         a.contacts.sort(Comparator.comparing(Person::getF_name, String.CASE_INSENSITIVE_ORDER));
         System.out.println("Sorted List Are: ");
