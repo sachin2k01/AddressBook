@@ -54,10 +54,11 @@ public class AddressApp
                         System.out.println(cit+" Found in contacts "+res+ " Times in Book "+c.name );
                     }
                     break;
-
-                case 0:
-                    System.exit(0);
+                default:
+                    System.out.println("Invalid Choice");
             }
+            System.out.println("Press 0 For EXIT");
+            S=sc.nextInt();
         }while (S!=0);
     }
 }
